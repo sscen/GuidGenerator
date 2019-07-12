@@ -2,7 +2,6 @@
 .vs/
 */obj/
 */bin/
-publish/
 
 
 # Compiled source #
@@ -28,3 +27,6 @@ publish/
 *.rar
 *.tar
 *.zip
+
+# Don't apply any above rule to these folders #
+!publish/*
