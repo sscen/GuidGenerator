@@ -14,6 +14,8 @@ namespace GuidGen
 
 			Console.ForegroundColor = ConsoleColor.Cyan;
 
+			var upperCase = true;
+
 			var input = Console.ReadLine().ToLower();
 
 			while (input != "exit")
@@ -30,6 +32,14 @@ namespace GuidGen
 					Console.ForegroundColor = ConsoleColor.White;
 					PrintInfo();
 				}
+				else if (input == "upper")
+				{
+					upperCase = true;
+				}
+				else if (input == "lower")
+				{
+					upperCase = false;
+				}
 				else if (Int32.TryParse(input, out var numOfGuidToGenerate))
 				{
 					for (int i = 0; i < numOfGuidToGenerate; i++)
@@ -38,7 +48,8 @@ namespace GuidGen
 						Console.ForegroundColor = ConsoleColor.Yellow;
 						Console.WriteLine($"{i + 1})");
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.WriteLine(Guid.NewGuid().ToString().ToUpper());
+						var guidString = upperCase ? Guid.NewGuid().ToString().ToUpper() : Guid.NewGuid().ToString().ToLower();
+						Console.WriteLine(guidString);
 						Console.ForegroundColor = ConsoleColor.Cyan;
 						Console.WriteLine();
 					}
